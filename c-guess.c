@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <ctype.h>
 
 int main(void)
 {
@@ -8,6 +9,7 @@ int main(void)
 	int guess, min = 1, max = 100;
 	int randomm;
 
+	srand(time(NULL));
 	randomm = ((rand() % (max - min + 1)) + 1);
 	while (1)
 	{
@@ -15,25 +17,16 @@ int main(void)
 		scanf("%d", &guess);
 		attempts++;
 		if (guess > randomm)
-		{
 			printf("Too high. Try again!\n");
-			continue;
-		}
 		else if (guess < randomm)
-		{
 			printf("Too low. Try again!\n");
-			continue;
-		}
 		else if (guess == randomm)
 		{
 			printf("Congratulations! You won the game after %d trials\n", attempts);
 			break;
 		}
-		else
-		{
+		else if (isalpha(guess))
 			printf("Please enter a valid number\n");
-			continue;
-		}
 	}
 	return (0);
 }
