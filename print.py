@@ -3,7 +3,7 @@
 a = 0
 while a < 6:
 	print(a, end=' ')
-	a = a + 1
+	a += 1
 print()
 lists = [1, 2, 3, 4, 5]
 for i in range(len(lists)):
