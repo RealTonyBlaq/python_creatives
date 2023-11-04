@@ -6,9 +6,11 @@
 class CC_Estate:
     """ Defines the class CC_Estate """
 
-    def __init__(self):
-        """ Initializes nothing """
-        pass
+    def __init__(self, state, lga, country="Nigeria"):
+        """ Initializes the attributes """
+        self.__state = state
+        self.__lga = lga
+        state.__country = country
 
     def string_validator(self, value):
         """ Validates a string """
@@ -50,7 +52,6 @@ class House(CC_Estate):
         occupants: Number of occupants in the house
         hn: House number, will be set to h_number
         """
-        super.__init__()
         House.__h_number += 1
         self.string_validator(name)
         self.__name = name
