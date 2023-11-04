@@ -4,6 +4,28 @@
 
 
 class CC_Estate:
+    """ Defines the class CC_Estate """
+
+    def __init__(self):
+        """ Initializes nothing """
+        pass
+
+    def string_validator(self, value):
+        """ Validates a string """
+        if not isinstance(value, str):
+            raise TypeError("{} must be a string".format(value))
+        if value is None or value == "":
+            raise ValueError("{} cannot be empty".format(value))
+
+    def integer_validator(self, value):
+        """ Validates an integer """
+        if not isinstance(value, int):
+            raise TypeError("{} must be a number".format(value))
+        if value <= 0 or value is None:
+            raise ValueError("{} must be >= 1".format(value))
+
+
+class House(CC_Estate):
     """
     This class is for an estate with:
 
@@ -28,11 +50,15 @@ class CC_Estate:
         occupants: Number of occupants in the house
         hn: House number, will be set to h_number
         """
-        CC_Estate.__h_number += 1
+        super.__init__()
+        House.__h_number += 1
+        self.string_validator(name)
         self.__name = name
+        self.string_validator(house_type)
         self.__house_type = house_type
+        self.integer_validator(occupants)
         self.__occupants = occupants
-        self.hn = CC_Estate.__h_number
+        self.__hn = House.__h_number
 
     @property
     def name(self):
@@ -86,5 +112,5 @@ class CC_Estate:
     def __str__(self):
         """ Returns a string a story of the house details """
         return "House #{} is a {} with {} occupants. It is owned by {}"\
-            .format(self.hn, self.__house_type,
+            .format(self.__hn, self.__house_type,
                     self.__occupants, self.__name)
