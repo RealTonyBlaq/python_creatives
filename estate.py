@@ -10,7 +10,7 @@ class CC_Estate:
         """ Initializes the attributes """
         self.__state = state
         self.__lga = lga
-        state.__country = country
+        self.__country = country
 
     def string_validator(self, value):
         """ Validates a string """
